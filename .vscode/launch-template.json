@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Executar testes behave",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "behave",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--no-capture",
+                "--no-capture-stderr",
+                "--no-skipped",
+                "features"
+            ],
+            "env": {"PYTHONPATH": "${workspaceRoot}"}
+        }
+    ]
+}

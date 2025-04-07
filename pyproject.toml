@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rabbitmq-example"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "ricardoclg", email = "ricardoclg_@hotmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["pika"]
+
+[project.urls]
+Documentation = "https://github.com/ricardoclg/rabbitmq-example#readme"
+Issues = "https://github.com/ricardoclg/rabbitmq-example/issues"
+Source = "https://github.com/ricardoclg/rabbitmq-example"
+
+[tool.hatch.version]
+path = "src/rabbitmq_example/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/rabbitmq_example tests}"
+
+[tool.coverage.run]
+source_pkgs = ["rabbitmq_example", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/rabbitmq_example/__about__.py",
+]
+
+[tool.coverage.paths]
+rabbitmq_example = ["src/rabbitmq_example", "*/rabbitmq-example/src/rabbitmq_example"]
+tests = ["tests", "*/rabbitmq-example/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
