@@ -1,2 +1,9 @@
+.pytest_cache
 *pyc
 .vscode/launch.json
+*.coverage
+coverage.xml
+pylint-report.txt
+sonar-project.properties
+.scannerwork/
+tests/report.xml

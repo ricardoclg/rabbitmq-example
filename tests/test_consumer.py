@@ -1,3 +1,7 @@
+"""
+Test using unittest
+"""
+
 import unittest
 from unittest.mock import MagicMock, patch
 
@@ -5,9 +9,15 @@ from rabbitmq_example.consumer import start_consumer
 
 
 class TestConsumer(unittest.TestCase):
+    """
+    Test for consumer methods
+    """
 
     @patch("pika.BlockingConnection")
     def test_start_consumer_success(self, mock_blocking_connection):
+        """
+        Tests consumer start success
+        """
         # Mock configuration
         mock_connection = MagicMock()
         mock_channel = MagicMock()
@@ -27,6 +37,9 @@ class TestConsumer(unittest.TestCase):
 
     @patch("pika.BlockingConnection")
     def test_start_consumer_connection_error(self, mock_blocking_connection):
+        """
+        Tests error handling
+        """
         # Mock connection exception
         mock_blocking_connection.side_effect = Exception("Connection failed")
         test_callback = MagicMock()

@@ -1,7 +1,22 @@
+"""
+Consumer module for RabbitMQ
+"""
+
 import pika
 
 
-def start_consumer(queue_name, callback):
+def start_consumer(queue_name: str, callback):
+    """
+    Start consumer and specify RabbitMQ queue
+
+    Args:
+        queue_name (str): Name of the queue to start
+        callback (Any): The consumer callbacks are dispatched only in the scope of
+        specially-designated methods
+
+    Raises:
+        Exception: If RabbitMQ fails to start consumer
+    """
     try:
         connection = pika.BlockingConnection(pika.ConnectionParameters("localhost"))
         channel = connection.channel()
@@ -21,7 +36,10 @@ def start_consumer(queue_name, callback):
 
 
 def main():
-    def callback_example(ch, method, properties, body):
+    def callback_example(body):
+        """
+        Some callback example
+        """
         print(f" [x] Mensagem recebida: {body.decode()}")
 
     queue_name = "test_queue"

@@ -1,4 +1,5 @@
-# SPDX-FileCopyrightText: 2025-present ricardoclg <ricardoclg_@hotmail.com>
-#
-# SPDX-License-Identifier: MIT
-__version__ = "0.0.1"
+"""
+Version control
+"""
+
+__version__ = "0.1.0"

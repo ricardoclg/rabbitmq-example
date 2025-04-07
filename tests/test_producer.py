@@ -1,3 +1,7 @@
+"""
+Test using unittest
+"""
+
 import unittest
 from unittest.mock import MagicMock, patch
 
@@ -5,9 +9,15 @@ from rabbitmq_example.producer import publish_message
 
 
 class TestProducer(unittest.TestCase):
+    """
+    Tests producer methods
+    """
 
     @patch("pika.BlockingConnection")
     def test_publish_message_success(self, mock_blocking_connection):
+        """
+        Test publication success
+        """
         # Mock configuration
         mock_connection = MagicMock()
         mock_channel = MagicMock()
@@ -26,6 +36,9 @@ class TestProducer(unittest.TestCase):
 
     @patch("pika.BlockingConnection")
     def test_publish_message_connection_error(self, mock_blocking_connection):
+        """
+        Tests error handling
+        """
         # Mock exception
         mock_blocking_connection.side_effect = Exception("Connection failed")
 

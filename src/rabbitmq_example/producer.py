@@ -1,7 +1,21 @@
+"""
+Module to send messages
+"""
+
 import pika
 
 
 def publish_message(queue_name, message):
+    """
+    Publishes a message to the specified RabbitMQ queue
+
+    Args:
+        queue_name (str): Name of the queue to publish to
+        message (str): Message content to be published
+
+    Raises:
+        Exception: If connection to RabbitMQ fails
+    """
     try:
         connection = pika.BlockingConnection(pika.ConnectionParameters("localhost"))
         channel = connection.channel()
